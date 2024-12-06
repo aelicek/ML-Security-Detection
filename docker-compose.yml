@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  ollama:
+    image: ollama/ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - 11434:11434
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      MODEL_HOST: "http://gamme-server.ru:11555"
+#      MODEL_HOST: "http://ollama:11434"
+    ports:
+      - 8080:8080
+    depends_on:
+      - ollama
+    restart: always
+
+volumes:
+  ollama:
