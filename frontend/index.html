@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Журнал защиты</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1>Журнал защиты</h1>
+
+  <table id="security-log" class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Действие</th>
+      <th scope="col">Дата и время</th>
+      <th scope="col">Затронутые файлы</th>
+      <th scope="col">Опасность</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Проверка приложений и файлов отключена</td>
+      <td>13.07.2020 11:26</td>
+      <td>scan.exe</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Угроза заблокирована</td>
+      <td>13.07.2020 11:23</td>
+      <td>malware.exe</td>
+      <td class="high-severity">Высокая</td>
+    </tr>
+    <tr>
+      <td>Угроза помещена в карантин</td>
+      <td>13.07.2020 11:23</td>
+      <td>virus.exe</td>
+      <td class="high-severity">Высокая</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn support-button" onclick="toggleChat()">?</button>
+
+  <div id="chat" class="chat-container">
+    <div class="chat-header" onclick="toggleChat()">Анализатор</div>
+    <div class="chat-body">
+      <div id="response"></div>
+      <label for="model-select"></label>
+      <select id="model-select">
+        <option value="llama3.2">llama3.2</option>
+        <option value="llama3.2-vision:11b">llama3.2-vision:11b</option>
+        <option value="qwen2.5-coder:32b">qwen2.5-coder:32b</option>
+      </select>
+      <button class="btn btn-success mb-2" style="float: right" onclick="sendSelectedRowsToServer()">Отправить выделенные строки</button>
+    </div>
+  </div>
+</div>
+
+<script src="scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</body>
+</html>
